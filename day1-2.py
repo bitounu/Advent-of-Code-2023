@@ -1,4 +1,3 @@
-gsum = 0;
 poczatek = []
 koniec = []
 cyfry = {
@@ -28,7 +27,6 @@ with open('day1-2', 'r') as myfile:
             try:
                 a = int(raz)
                 poczatek.append(raz)
-#                print(raz)
                 break
             except:
                 pass
@@ -47,12 +45,6 @@ with open('day1-2', 'r') as myfile:
             trzy2    = rline[i:i+3]
             cztery2  = rline[i:i+4]
             piec2    = rline[i:i+5]
-#            print(f"trojki: {list(cyfry.keys())[:3]}")
-#            print(f"revtrojki: {list(map(rev, list(cyfry.keys())[:3]))}")
-#            print(f"czworki: {list(cyfry.keys())[3:6]}")
-#            print(f"revczworki: {list(map(rev, list(cyfry.keys())[3:6]))}")
-#            print(f"piatki: {list(cyfry.keys())[6:9]}")
-#            print(f"revpiatki: {list(map(rev, list(cyfry.keys())[6:9]))}")
             try:
                 a = int(raz2)
                 koniec.append(raz2)
@@ -68,11 +60,8 @@ with open('day1-2', 'r') as myfile:
             if piec2 in list(map(rev, list(cyfry.keys())[6:9])):
                 koniec.append( cyfry[piec2[::-1]] )
                 break
-print(f"poczatek: {poczatek}")
-print(f"koniec: {koniec}")
 suma = 0
 for i in range(0, len(poczatek)):
     liczba = str(poczatek[i])+str(koniec[i])
-    print(f"liczba: {liczba}")
     suma += int(liczba)
 print(f"{suma}")
