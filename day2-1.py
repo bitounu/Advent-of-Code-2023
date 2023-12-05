@@ -1,43 +1,40 @@
-games = []
+suma_gier = 0
+# 12 red cubes, 13 green cubes, and 14 blue cubes
+R = 12
+G = 13
+B = 14
 with open('day2-1', 'r') as myfile:
     for line in myfile:
         game = line.split(':')
         game[0] = game[0].replace('Game ','')
         wyniki = game[1].split(';')
         print("=============================================================")
-        gameno = game[0]
+        gameno = int(game[0])
         print(f"gameno: {gameno}")
-        mydraw = {"game":[],"red":[],"green":[],"blue":[]}
-        mydraw["game"].append(gameno)
+        game = True
         for wynik in wyniki:
-            draw = wynik.split(",")
+            draws = wynik.split(",")
             print("+-----------------------------------------")
-            print(f"draw: {draw}")
-            for b in range(0, len(draw)):
-                print(f"draw[{b}]: {draw[b]}")
-                x = draw[b].replace('\n','').strip().split(" ")
-                liczba  = x[0]
+            print(f"draws: {draws}")
+            for draw in range(0, len(draws)):
+                print(f"draws[{draw}]: {draws[draw]}")
+                x = draws[draw].replace('\n','').strip().split(" ")
+                liczba  = int(x[0])
                 kolor   = x[1]
-                if kolor == 'red' and liczba is not None:
-                    red = liczba
-                else:
-                    red = 0
-                if kolor == 'green' and liczba is not None:
-                    green = liczba
-                else:
-                    green = 0
-                if kolor == 'blue' and liczba is not None:
-                    blue = liczba
-                else:
-                    blue = 0
                 print(f"liczba: {liczba}, kolor {kolor}")
-                print(f"red: {red} blue: {blue} green: {green}")
-
-#                print(f"mydraw: {mydraw}")
-            games.append(mydraw)
-        print(f"mydraw: {mydraw}")
-        red     = False
-        green   = False
-        blue    = False
-#print(games)
-
+                if kolor == 'red':
+                    if liczba > R:
+                        game = False
+                        break
+                if kolor == 'green':
+                    if liczba > G:
+                        game = False
+                        break
+                if kolor == 'blue':
+                    if liczba > B:
+                        game = False
+                        break
+            print(f"Gra: {game}")
+        if game:
+            suma_gier += gameno
+print(f"Suma gier: {suma_gier}")
